@@ -433,7 +433,7 @@ class Modmail(commands.Bot):
 
         if id in top_chan.topic:
             await top_chan.edit(topic=topic)
-            await ctx.send('Usuario desblloqueado com sucesso!')
+            await ctx.send('Usuario desbloqueado com sucesso!')
         else:
             await ctx.send('O usuario ainda não está bloqueado.')
 
