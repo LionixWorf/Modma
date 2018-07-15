@@ -270,7 +270,7 @@ class Modmail(commands.Bot):
 
         if member:
             em.add_field(name='Entro no Servidor', value=str((time - member.joined_at).days)+' dias atraz.')
-            em.add_field(name='Membro.',value=str(member_number),inline = True)
+            em.add_field(name='Membro nº.',value=str(member_number),inline = True)
             em.add_field(name='Nome', value=member.nick, inline=True)
             em.add_field(name='Cargos', value=rolenames, inline=True)
         
@@ -331,7 +331,7 @@ class Modmail(commands.Bot):
 
     @property
     def blocked_em(self):
-        em = discord.Embed(title='Menssagem não enviada!', color=discord.Color.red())
+        em = discord.Embed(title='Mensagem não enviada!', color=discord.Color.red())
         em.description = 'Você foi bloqueado de usar o ModMail.'
         return em
 
