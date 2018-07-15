@@ -250,7 +250,7 @@ class Modmail(commands.Bot):
         member = self.guild.get_member(user.id)
         avi = user.avatar_url
         time = datetime.datetime.utcnow()
-        desc = 'Modmail thread started.'
+        desc = 'Sessão Iniciada!.'
         color = 0
 
         if member:
@@ -355,8 +355,11 @@ class Modmail(commands.Bot):
         if str(message.author.id) in blocked:
             return await message.author.send(embed=self.blocked_em)
 
-        em = discord.Embed(title='Thanks for the message!')
-        em.description = 'The moderation team will get back to you as soon as possible!'
+        em = discord.Embed(title='Vagas para Moderação!')
+        em.description = '**Vagas abertas para Moderação, para se candidatar, responda as perguntas:**\n' \
+          ' `1- Quantos anos você tem?\n`'\
+          ' `2- Por você quer ser tornar Moderador?\n'`\ 
+          ' `3- Oque você fará para melhorar o grupo?\n'`\
         em.color = discord.Color.green()
 
         if channel is not None:
