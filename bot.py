@@ -263,19 +263,19 @@ class Modmail(commands.Bot):
 
         em = discord.Embed(colour=color, description=desc, timestamp=time)
 
-        em.add_field(name='Account Created', value=str((time - user.created_at).days)+' days ago.')
-        em.set_footer(text='User ID: '+str(user.id))
+        em.add_field(name='Conta criada', value=str((time - user.created_at).days)+' dias atraz.')
+        em.set_footer(text='ID do usuario: '+str(user.id))
         em.set_thumbnail(url=avi)
         em.set_author(name=user, icon_url=server.icon_url)
       
 
         if member:
-            em.add_field(name='Joined', value=str((time - member.joined_at).days)+' days ago.')
-            em.add_field(name='Member No.',value=str(member_number),inline = True)
-            em.add_field(name='Nick', value=member.nick, inline=True)
-            em.add_field(name='Roles', value=rolenames, inline=True)
+            em.add_field(name='Joined', value=str((time - member.joined_at).days)+' dias atraz.')
+            em.add_field(name='Membro.',value=str(member_number),inline = True)
+            em.add_field(name='Nome', value=member.nick, inline=True)
+            em.add_field(name='Cargos', value=rolenames, inline=True)
         
-        em.add_field(name='Message', value=message.content, inline=False)
+        em.add_field(name='Messagem', value=message.content, inline=False)
 
         return em
 
@@ -296,8 +296,8 @@ class Modmail(commands.Bot):
 
         if mod:
             fmt.color=discord.Color.green()
-            fmt.set_author(name=str(author), icon_url=author.avatar_url)
-            fmt.set_footer(text='Moderator')
+            fmt.set_author(name=str(Role), icon_url=author)
+            fmt.set_footer(text='Moderador')
         else:
             fmt.color=discord.Color.gold()
             fmt.set_author(name=str(author), icon_url=author.avatar_url)
