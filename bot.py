@@ -355,8 +355,8 @@ class Modmail(commands.Bot):
         if str(message.author.id) in blocked:
             return await message.author.send(embed=self.blocked_em)
 
-        em = discord.Embed(title='Vagas para Moderação!')
-        em.description = '**Vagas abertas para Moderação, para se candidatar, informe a sua ideda!**'
+        em = discord.Embed(title='Vagas para Moderação abertas, para participar informe:!')
+        em.description = '**Sua idade? Por que quer ser um moderador? Oque fazer para mudar o grupo? \n Boa Sorte!**'
         em.color = discord.Color.green()
 
         if channel is not None:
