@@ -296,7 +296,7 @@ class Modmail(commands.Bot):
 
         if mod:
             fmt.color=discord.Color.green()
-            fmt.set_author(name=str(Role), icon_url=author)
+            fmt.set_author(name=str(author), icon_url=https://cdn.discordapp.com/attachments/468023738491731988/468026271322996747/stock-vector-vector-illustration-of-a-strong-rhino-with-big-biceps-491080435.jpg)
             fmt.set_footer(text='Moderador')
         else:
             fmt.color=discord.Color.gold()
