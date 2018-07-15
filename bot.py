@@ -186,8 +186,8 @@ class Modmail(commands.Bot):
             )
         await categ.edit(position=0)
         c = await ctx.guild.create_text_channel(name='bot-info', category=categ)
-        await c.edit(topic='Adicione manualmente os ID do usuario para bloquea-lo.\n\n'
-                           'Bloqueado\n-------\n\n')
+        await c.edit(topic='Manually add user id\'s to block users.\n\n'
+                           'Blocked\n-------\n\n')
         await c.send(embed=self.help_embed(ctx.prefix))
         await ctx.send('Servidor configurado com sucesso.')
 
