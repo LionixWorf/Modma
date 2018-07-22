@@ -166,8 +166,8 @@ class Modmail(commands.Bot):
 
         warn = 'Não altere nada manualmente nas configurações desta sala. ' \
                'Ao modificar algo nesta sala, ocorrerá um erro nas configurações do bot.'
-        em.add_field(name='Commands', value=cmds)
-        em.add_field(name='Warning', value=warn)
+        em.add_field(name='Comandos', value=cmds)
+        em.add_field(name='Atenção', value=warn)
         em.add_field(name='Github', value='https://github.com/verixx/modmail')
         em.set_footer(text='Repositorio do bot para configurações ocultas!')
 
@@ -219,7 +219,7 @@ class Modmail(commands.Bot):
         user_id = int(ctx.channel.topic.split(': ')[1])
         user = self.get_user(user_id)
         em = discord.Embed(title='Obrigado!')
-        em.description = f'**Sua resposta foi enviada para analise!**'
+        em.description = f'**Chat de suporte foi finalizado!**'
         em.color = discord.Color.red()
         try:
             await user.send(embed=em)
@@ -274,7 +274,7 @@ class Modmail(commands.Bot):
             em.add_field(name='Nome', value=member.nick, inline=True)
             em.add_field(name='Cargos', value=rolenames, inline=True)
         
-        em.add_field(name='Messagem', value=message.content, inline=False)
+        em.add_field(name='Mensagem', value=message.content, inline=False)
 
         return em
 
@@ -354,8 +354,8 @@ class Modmail(commands.Bot):
         if str(message.author.id) in blocked:
             return await message.author.send(embed=self.blocked_em)
 
-        em = discord.Embed(title='Vagas para Moderação abertas!')
-        em.description = '**Para Participar Informe:**\n \n``1-Sua idade.\n2-Por que quer ser um moderador.\n3-Oque fazer para mudar o grupo.`` \n\n **Boa Sorte!**'
+        em = discord.Embed(title='Sua mensagem chegou até nós.')
+        em.description = '**A equipe de moderação está trabalhando duro, para atende-lo o mais rápido possivel!**'
         em.color = discord.Color.green()
 
         if channel is not None:
