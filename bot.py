@@ -160,8 +160,8 @@ class Modmail(commands.Bot):
                f'`{prefix}reply <mensagem...>` - Envia a mensagem desejada a quem iniciou a sessão.\n' \
                f'`{prefix}close` - Fecha a sessão de conversa com o membro e apaga a sala.\n' \
                f'`{prefix}disable` - Desabilita o ModMail e fecha todas as salas em execução.\n' \
-               f'`{prefix}customstatus` - Muda o status do bot.' \
-               f'`{prefix}block` - Bloqueia um usuario de usar o ModMail!' \
+               f'`{prefix}customstatus` - Muda o status do bot.\n' \
+               f'`{prefix}block` - Bloqueia um usuario de usar o ModMail!\n' \
                f'`{prefix}unblock` - Desbloqueia um usuario de usar o ModMail!'
 
         warn = 'Não altere nada manualmente nas configurações desta sala. ' \
