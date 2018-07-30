@@ -262,14 +262,14 @@ class Modmail(commands.Bot):
 
         em = discord.Embed(colour=color, description=desc, timestamp=time)
 
-        em.add_field(name='Conta criada', value=str((time - user.created_at).days)+' dias atraz.')
+        em.add_field(name='Conta criada', value=str((time - user.created_at).days)+' dias atrás.')
         em.set_footer(text='ID do usuario: '+str(user.id))
         em.set_thumbnail(url=avi)
         em.set_author(name=user, icon_url=server.icon_url)
       
 
         if member:
-            em.add_field(name='Entro no Servidor', value=str((time - member.joined_at).days)+' dias atraz.')
+            em.add_field(name='Entro no Servidor', value=str((time - member.joined_at).days)+' dias atrás.')
             em.add_field(name='Membro nº.',value=str(member_number),inline = True)
             em.add_field(name='Nome', value=member.nick, inline=True)
             em.add_field(name='Cargos', value=rolenames, inline=True)
@@ -299,7 +299,7 @@ class Modmail(commands.Bot):
         else:
             fmt.color=discord.Color.gold()
             fmt.set_author(name=str(author), icon_url=author.avatar_url)
-            fmt.set_footer(text='User')
+            fmt.set_footer(text='Usuario')
 
         embed = None
 
