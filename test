@@ -1,0 +1,8 @@
+package com.mrpowergamerbr.loritta.utils.gabriela
+
+object Gabriela {
+	@JvmStatic
+	fun main(args: Array<String>) {
+		println("Olá mundo!")
+	}
+}
