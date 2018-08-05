@@ -1,0 +1,66 @@
+package com.mrpowergamerbr.loritta.utils.gabriela
+
+import com.mongodb.MongoClient
+import com.mongodb.MongoClientOptions
+import com.mongodb.client.model.Filters
+import com.mrpowergamerbr.loritta.Loritta.Companion.RANDOM
+import com.mrpowergamerbr.loritta.userdata.LorittaProfile
+import com.mrpowergamerbr.loritta.userdata.ServerConfig
+import com.mrpowergamerbr.loritta.utils.eventlog.StoredMessage
+import org.bson.codecs.configuration.CodecRegistries
+import org.bson.codecs.pojo.PojoCodecProvider
+import org.bson.codecs.pojo.annotations.BsonCreator
+import org.bson.codecs.pojo.annotations.BsonProperty
+
+object Gabriela {
+	@JvmStatic
+	fun main(args: Array<String>) {
+		println("Olá mundo!")
+
+		val pojoCodecRegistry = CodecRegistries.fromRegistries(MongoClient.getDefaultCodecRegistry(),
+				CodecRegistries.fromProviders(PojoCodecProvider.builder().automatic(true).build()))
+
+		val mongoBuilder = MongoClientOptions.Builder().apply {
+			codecRegistry(pojoCodecRegistry)
+		}
+
+		val options = mongoBuilder
+				.maxConnectionIdleTime(10000)
+				.maxConnectionLifeTime(10000)
+				.connectionsPerHost(750)
+				.build()
+
+		val mongo = MongoClient("127.0.0.1:27017", options) // Hora de iniciar o MongoClient
+
+		val db = mongo.getDatabase("loritta")
+
+		val dbCodec = db.withCodecRegistry(pojoCodecRegistry)
+
+		val gabrielaMessages = dbCodec.getCollection("gabriela", GabrielaMessage::class.java)
+
+		while (true) {
+			val pergunta = readLine()!!.toLowerCase() // Já que nós não ligamos se o cara escreve "Nilce" ou "nilce"
+
+			println("Você: $pergunta")
+
+			val document = gabrielaMessages.find(
+					Filters.eq("_id", pergunta)
+			).firstOrNull()
+
+			if (document != null) {
+				println(document.answers[RANDOM.nextInt(document.answers.size)])
+			} else {
+				println("Eu não sei uma resposta para esta pergunta! :(")
+			}
+		}
+	}
+
+	class GabrielaMessage @BsonCreator constructor(
+			@BsonProperty("_id")
+			_question: String // Guild ID
+	) {
+		@BsonProperty("_id")
+		val question = _question
+		var answers = mutableListOf<String>()
+	}
+}
