@@ -1,0 +1,43 @@
+var ultimaPergunta = "???"
+var nextCanBeLearn = false
+
+while (true) {
+	val pergunta = readLine()!!.toLowerCase() // Já que nós não ligamos se o cara escreve "Nilce" ou "nilce"
+
+	if (nextCanBeLearn && pergunta == "y") {
+		println("Quando alguém perguntar \"${ultimaPergunta}\", o que eu devo responder?")
+		val deveResponder = readLine()!!.toLowerCase()
+
+		// Nós agora iremos pegar se a Gabriela já aprendeu alguma resposta para esta frase, se não, nós iremos criar uma
+		val document = gabrielaMessages.find(
+				Filters.eq("_id", pergunta)
+		).firstOrNull() ?: GabrielaMessage(ultimaPergunta)
+
+		document.answers.add(deveResponder)
+
+		println("Obrigada por me ensinar!")
+
+		// upsert = Se já existe, apenas dê replace, se não existe, insira
+		val updateOptions = UpdateOptions().upsert(true)
+		gabrielaMessages.replaceOne(
+				Filters.eq("_id", ultimaPergunta),
+				document,
+				updateOptions
+		)
+		continue
+	}
+
+	println("Você: $pergunta")
+
+	val document = gabrielaMessages.find(
+			Filters.eq("_id", pergunta)
+	).firstOrNull()
+
+	if (document != null) {
+		println("Gabriela: " + document.answers[RANDOM.nextInt(document.answers.size)])
+	} else {
+		println("Gabriela: Eu não sei uma resposta para esta pergunta! :( Se você quer me ensinar, responda com y!")
+		ultimaPergunta = pergunta
+		nextCanBeLearn = true
+	}
+}
